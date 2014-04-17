@@ -283,7 +283,7 @@ app.get('/v0/opps', function(req, res) {
     }
 
     if (! S(fq).isEmpty()) {
-        query = ejs.FilteredQuery(ejs.QueryStringQuery(fq));
+        query = ejs.FilteredQuery(query, ejs.QueryFilter(ejs.QueryStringQuery(fq)));
     }
 
     console.log(query.toString());
