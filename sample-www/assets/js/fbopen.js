@@ -60,8 +60,12 @@
 
     form_params = ['q', 'fq', 'parent_only', 'p', 'naics', 'data_source'];
     for (i in form_params) {
-      $('#' + form_params[i]).val(getQueryVariable(form_params[i]));
-      search_params[form_params[i]] = getQueryVariable(form_params[i]);
+      param_name = form_params[i];
+      q_param = getQueryVariable(param_name);
+      if (! S(q_param).isEmpty()) {
+        $('#' + param_name).val(q_param);
+        search_params[param_name] = q_param;
+      }
     }
 
     // checkboxen:
