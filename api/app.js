@@ -1,4 +1,3 @@
-
 /*
  *
  
@@ -266,12 +265,10 @@ app.get('/v0/opps', function(req, res) {
 
     var query = undefined;
 
+    var qsq = ejs.QueryStringQuery(q);
     var bool_query = ejs.BoolQuery().should([
-        ejs.QueryStringQuery(q),
-        ejs.HasChildQuery(
-            ejs.QueryStringQuery(q),
-            "opp_attachment"
-        )
+        qsq,
+        ejs.HasChildQuery(qsq, "opp_attachment")
     ]);
 
     if (S(q).isEmpty()) {
