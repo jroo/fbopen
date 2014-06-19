@@ -1,26 +1,25 @@
-var datasource_id = 'bids.state.gov';
+var datasource_id = 'dodsbir.net';
 var fs = require('fs');
 var sha1 = require('sha1');
 
-var infile = process.argv[2] || 'workfiles/download.json';
+var infile = process.argv[2] || 'workfiles/alltopics.json';
 var outfile = process.argv[3] || 'workfiles/notices.json';
 var field_map = {
-	'Project_Announced': 'posted_dt'
-	, 'Project_Title': 'title'
-	, 'Implementing_Entity': 'agency'
-	, 'Country': 'location'
-	, 'Project_Description': 'description'
-	, 'Link_To_Project': 'listing_url'
-  , 'Project_Number': 'solnbr'
+	  'title': 'title'
+	, 'description': 'description'
+	, 'url': 'listing_url'
+    , 'proposals_begin_date': 'start_dt'
+    , 'proposals_end_date': 'close_dt'
+  , 'topic_number': 'solnbr'
 };
 
 var data = JSON.parse(fs.readFileSync(infile, "utf-8"));
-var bids = data['features'];
+var bids = data;
 var es_data = [];
 
 bids.forEach(function(bid){
     
-    var b = bid['properties'];
+    var b = bid;
     var bid_obj = { 'ext': {} };
 
     for (var field in b){
@@ -31,9 +30,9 @@ bids.forEach(function(bid){
         }
     }
     
-    bid_obj['id'] = sha1( b['Lat'] + ':' + b['Lon'] + ':' + b['title']);
+    bid_obj['id'] = sha1( b['topic_number'] + ':' + b['title']);
     bid_obj['data_source'] = datasource_id;
-    bid_obj['posted_dt'] = new Date(bid_obj['posted_dt']);
+    //bid_obj['posted_dt'] = new Date(bid_obj['posted_dt']);
 
     es_data.push(JSON.stringify(bid_obj));
 });

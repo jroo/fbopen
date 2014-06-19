@@ -17,24 +17,20 @@ $ npm install
 $ (cd ../common/ && npm install)
 ```
 
-### Environment
-
-You'll need to set the `FBOPEN_ROOT` environment variable in order to run the script.
-
-```
-$ FBOPEN_ROOT=~/projects/fbopen
-```
-
-We suggest using a tool like [autoenv](https://github.com/groovecoder/autoenv) to manage these variables.
-
 ### Run dodsbir scraper
 ```
 $ python gettopics.py
 ```
 
-### Run the loader
+### Environment
+
+You'll need to set the `FBOPEN_ROOT` environment variable in order to run the script.
+
+We suggest using a tool like [autoenv](https://github.com/groovecoder/autoenv) to manage these variables.
+
+### Set the environment variable and run the loader
 ```
-$ dodsbir-nightly.sh
+$ FBOPEN_ROOT=~/projects/fbopen/ ./dodsbir-nightly.sh
 ```
 
 That's it! You may need to create a workfiles directory for the first run. 
