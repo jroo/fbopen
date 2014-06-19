@@ -6,7 +6,6 @@ The loader currently loads topics but does not load questions and answers associ
 ### Prerequisites
 * Python >= 2.7
 * Node
-* wget
 
 ### Install requirements
 From the `loaders/dodsbir.net` directory:
@@ -15,11 +14,6 @@ From the `loaders/dodsbir.net` directory:
 $ pip install -r requirements.txt
 $ npm install
 $ (cd ../common/ && npm install)
-```
-
-### Run dodsbir scraper
-```
-$ python gettopics.py
 ```
 
 ### Environment
