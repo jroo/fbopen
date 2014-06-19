@@ -1,8 +1,8 @@
-var datasource_id = 'dodsbir.net';
+var datasource_id = 'bids.state.gov';
 var fs = require('fs');
 var sha1 = require('sha1');
 
-var infile = process.argv[2] || 'workfiles/alltopics.json';
+var infile = process.argv[2] || 'workfiles/download.json';
 var outfile = process.argv[3] || 'workfiles/notices.json';
 var field_map = {
 	'Project_Announced': 'posted_dt'

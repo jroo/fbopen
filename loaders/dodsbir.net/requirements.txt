@@ -1,0 +1,1 @@
+-e git://github.com/jroo/dodsbir-scrape.git#egg=dodsbirscrape.egg
